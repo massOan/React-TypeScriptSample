@@ -10,11 +10,11 @@ export const LANGUAGE_OPTIONS: { id: Language; label: string }[] = [
 export const messages = {
     ko: {
         home: {
-            heroTitle: "심플한 웹 UI 목업",
+            heroTitle: "Android × Web으로 가치를 만드는 개발자, 장익준입니다.",
             heroDescription:
-                "상단에 탭 5개가 있는 기본 웹 페이지 레이아웃입니다. 이 구조를 기반으로 React + TypeScript로 쉽게 확장할 수 있습니다.",
-            featuresTitle: "기능 소개",
-            featuresSubtitle: "간단한 카드 구성으로 핵심 기능을 소개합니다.",
+                "통신 영역의 Android 앱 개발을 약 3년간 담당해 왔으며, 현재는 React + TypeScript로 Web 프론트엔드를 확장하며 일본에서의 커리어를 준비하고 있습니다.",
+            primaryCta: "프로젝트 보러가기",
+            secondaryCta: "경력 요약 보기",
         },
         products: {
             title: "Products / Services",
@@ -46,11 +46,12 @@ export const messages = {
     },
     ja: {
         home: {
-            heroTitle: "シンプルな Web UI モック",
+            heroTitle:
+                "Android × Web で価値を生み出すエンジニア、張 益準（チャン・イクジュン）です。",
             heroDescription:
-                "上部に 5 つのタブがある基本的な Web ページレイアウトです。React と TypeScript をベースに簡単に拡張できます。",
-            featuresTitle: "機能紹介",
-            featuresSubtitle: "シンプルなカード構成で主な機能を紹介します。",
+                "通信キャリア向けのAndroidアプリ開発を約3年担当してきました。現在はReact + TypeScriptでWebフロントにも取り組み、日本でのキャリアを目指して準備を進めています。",
+            primaryCta: "プロジェクト一覧を見る",
+            secondaryCta: "職務経歴の概要を見る",
         },
         products: {
             title: "Products / Services",

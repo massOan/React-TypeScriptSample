@@ -9,19 +9,19 @@ type HeaderProps = {
     onTabChange: (id: TabId) => void;
 };
 
-const NAV_LABELS: Record<Language, Record<TabId, string>> = {
+export const NAV_LABELS: Record<Language, Record<TabId, string>> = {
     ko: {
-        home: "홈",
-        products: "제품",
-        pricing: "요금제",
-        blog: "블로그",
-        contact: "문의",
+        home: "홈 / 소개",
+        products: "프로젝트",
+        pricing: "강점 & 제공가치",
+        blog: "노트 / 블로그",
+        contact: "연락처",
     },
     ja: {
-        home: "ホーム",
-        products: "プロダクト",
-        pricing: "料金",
-        blog: "ブログ",
+        home: "ホーム / プロフィール",
+        products: "プロジェクト",
+        pricing: "強み・提供価値",
+        blog: "ノート / ブログ",
         contact: "お問い合わせ",
     },
 };
@@ -35,7 +35,11 @@ export const Header: React.FC<HeaderProps> = ({
     return (
         <header className="header">
             <div className="container header-inner">
-                <div className="logo">MySite</div>
+                <div className="logo">
+                    <div className="logo-main">ikjun.dev</div>
+                    <div className="logo-sub">Android × Web Engineer</div>
+                </div>
+
 
                 <nav className="nav-tabs">
                     {TABS.map((tab) => {

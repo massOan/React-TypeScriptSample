@@ -1,34 +1,62 @@
 // src/widgets/home/HomeFeatures.tsx
 import React from "react";
-import { messages } from "../../shared/config/i18n";
+import { messages, Language } from "../../shared/config/i18n";
 import { useLanguage } from "../../shared/context/LanguageContext";
 
-const FEATURES = [
-  {
-    title: "Clean Header",
-    description: "로고 + 탭 + 로그인 버튼으로 구성된 심플한 헤더.",
-  },
-  {
-    title: "Hero Section",
-    description: "타이틀과 버튼으로 주요 액션을 유도하는 영역.",
-  },
-  {
-    title: "Content Cards",
-    description: "서비스/기능을 카드 형태로 보기 좋게 정리.",
-  },
-];
+type Feature = {
+  title: string;
+  description: string;
+};
+
+const FEATURES: Record<Language, Feature[]> = {
+  ko: [
+    {
+      title: "통신 영역 Android 실무 경험",
+      description:
+        "LG U+ 프로젝트를 중심으로 Android 앱 개발을 약 3년간 담당하며, 부가서비스 플로우 설계와 화면 구현을 경험했습니다.",
+    },
+    {
+      title: "UI/UX 및 성능 개선",
+      description:
+        "화면 전환 시간 단축, 리스트 스크롤 성능 개선 등 수치 기반으로 문제를 정의하고 개선한 경험이 있습니다.",
+    },
+    {
+      title: "Web 프론트엔드로의 확장",
+      description:
+        "React + TypeScript로 포트폴리오 사이트를 직접 설계·구현하며, Android에서 Web으로 스킬을 확장하고 있습니다.",
+    },
+  ],
+  ja: [
+    {
+      title: "通信領域でのAndroid実務経験",
+      description:
+        "LG U+ 向けプロジェクトを中心に、約3年間Androidアプリ開発を担当し、付加サービスフローの設計・画面実装を行ってきました。",
+    },
+    {
+      title: "UI/UX とパフォーマンス改善",
+      description:
+        "画面遷移時間の短縮やリスト表示のスクロール性能改善など、数値にもとづいて課題を定義し改善した経験があります。",
+    },
+    {
+      title: "Webフロントエンドへの拡張",
+      description:
+        "React + TypeScript で本ポートフォリオサイトを設計・実装し、Androidで培った知見をWebフロロントにも広げています。",
+    },
+  ],
+};
 
 export const HomeFeatures: React.FC = () => {
   const { language } = useLanguage();
   const t = messages[language].home;
+  const features = FEATURES[language];
 
   return (
     <section className="section">
       <div className="container">
-        <h2 className="section-title">{t.featuresTitle}</h2>
-        <p className="section-subtitle">{t.featuresSubtitle}</p>
+        <h2 className="section-title">{t.heroTitle}</h2>
+        <p className="section-subtitle">{t.heroDescription}</p>
         <div className="card-grid">
-          {FEATURES.map((feature) => (
+          {features.map((feature) => (
             <article key={feature.title} className="card">
               <h3>{feature.title}</h3>
               <p>{feature.description}</p>

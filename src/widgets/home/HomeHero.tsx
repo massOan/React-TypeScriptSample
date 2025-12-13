@@ -14,8 +14,6 @@ export const HomeHero: React.FC = () => {
                     <h1>{t.heroTitle}</h1>
                     <p>{t.heroDescription}</p>
                     <div className="hero-actions">
-                        <button className="btn-primary">Get Started</button>
-                        <button className="btn-ghost">Learn More</button>
                     </div>
                 </div>
             </div>
