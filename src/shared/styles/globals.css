@@ -191,6 +191,24 @@ main {
     padding: 20px;
     border: 1px solid #e5e7eb;
     box-shadow: 0 10px 20px rgba(15, 23, 42, 0.06);
+
+    /* hover 애니메이션을 위한 공통 */
+    transition:
+        transform 0.16s ease-out,
+        box-shadow 0.16s ease-out,
+        border-color 0.16s ease-out,
+        background-color 0.16s ease-out;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    /* 살짝 위로 띄우기 */
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.18);
+    /* 그림자 진하게 */
+    border-color: rgba(129, 140, 248, 0.9);
+    /* 약간 보라색 느낌 */
+    cursor: pointer;
+    /* 클릭 가능해 보이게 */
 }
 
 .card h3 {
