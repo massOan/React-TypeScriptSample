@@ -14,8 +14,7 @@ export type ProjectRow = {
 };
 
 export async function fetchProjectsByLanguage(
-    language: Language
-): Promise<ProjectRow[]> {
+    { language }: { language: Language; }): Promise<ProjectRow[]> {
     const { data, error } = await supabase
         .from("projects")
         .select("*")
