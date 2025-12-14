@@ -1,14 +1,15 @@
-// src/shared/ui/CommonModal.tsx
-import React, { useEffect } from "react";
+import React, { ReactNode, useEffect } from "react";
 
-export type CommonModalProps = {
+type ModalSize = "md" | "lg" | "xl";
+
+type CommonModalProps = {
     open: boolean;
     onClose: () => void;
     title?: string;
     description?: string;
-    children?: React.ReactNode;
-    footer?: React.ReactNode;
-    size?: "sm" | "md" | "lg";
+    size?: ModalSize;
+    footer?: ReactNode;
+    children: ReactNode;
 };
 
 export const CommonModal: React.FC<CommonModalProps> = ({
@@ -16,61 +17,54 @@ export const CommonModal: React.FC<CommonModalProps> = ({
     onClose,
     title,
     description,
-    children,
+    size = "xl",
     footer,
-    size = "md",
+    children,
 }) => {
-    // ✅ 훅은 항상 컴포넌트 최상단에서 호출
     useEffect(() => {
         if (!open) return;
-
-        const onKeyDown = (e: KeyboardEvent) => {
-            if (e.key === "Escape") {
-                onClose();
-            }
+        const original = document.body.style.overflow;
+        document.body.style.overflow = "hidden";
+        return () => {
+            document.body.style.overflow = original;
         };
+    }, [open]);
 
-        document.addEventListener("keydown", onKeyDown);
-        return () => document.removeEventListener("keydown", onKeyDown);
+    // ✅ ESC로 닫기(선택)
+    useEffect(() => {
+        if (!open) return;
+        const onKeyDown = (e: KeyboardEvent) => {
+            if (e.key === "Escape") onClose();
+        };
+        window.addEventListener("keydown", onKeyDown);
+        return () => window.removeEventListener("keydown", onKeyDown);
     }, [open, onClose]);
 
-    // ✅ 훅 호출 이후에 early return
     if (!open) return null;
 
-    const width =
-        size === "sm" ? 420 : size === "lg" ? 840 : 640;
-
-    const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
-        if (e.target === e.currentTarget) {
-            onClose();
-        }
-    };
-
     return (
-        <div className="modal-backdrop" onClick={handleBackdropClick}>
+        <div className="modal-backdrop" onClick={onClose}>
             <div
-                className="modal"
-                style={{ width: "100%", maxWidth: width }}
+                className={`modal-dialog modal-${size}`}
+                onClick={(e) => e.stopPropagation()}
+                role="dialog"
+                aria-modal="true"
             >
+                {/* ✅ 헤더 sticky */}
                 <div className="modal-header">
                     <div>
-                        {title && <h2 className="modal-title">{title}</h2>}
-                        {description && (
-                            <p className="modal-description">{description}</p>
-                        )}
+                        {title && <h3 className="modal-title">{title}</h3>}
+                        {description && <p className="modal-description">{description}</p>}
                     </div>
-                    <button
-                        type="button"
-                        className="modal-close"
-                        onClick={onClose}
-                        aria-label="Close"
-                    >
-                        ×
+                    <button className="modal-close" onClick={onClose} aria-label="Close">
+                        ✕
                     </button>
                 </div>
 
-                {children && <div className="modal-body">{children}</div>}
+                {/* ✅ body만 스크롤 */}
+                <div className="modal-body">{children}</div>
 
+                {/* ✅ 푸터 sticky */}
                 {footer && <div className="modal-footer">{footer}</div>}
             </div>
         </div>
