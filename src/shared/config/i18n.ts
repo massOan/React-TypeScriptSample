@@ -18,7 +18,7 @@ export const messages = {
         },
         products: {
             title: "Products / Services",
-            subtitle: "제공하고 싶은 서비스나 포트폴리오 프로젝트를 정리해 둘 수 있습니다.",
+            subtitle: "지금까지 참여했던 프로젝트를 정리했습니다.",
             searchPlaceholder: "검색어를 입력하세요 (예: React, Mobile...)",
         },
         pricing: {
@@ -43,6 +43,16 @@ export const messages = {
             messagePlaceholder: "간단히 문의 내용을 적어 주세요.",
             submitLabel: "문의 보내기",
         },
+        footer: {
+            brand: "ikjun.dev",
+            tagline: "Android × Web 포트폴리오",
+            builtWith: "React + TypeScript · GitHub Pages",
+            links: {
+                github: "GitHub",
+                email: "Email",
+            },
+            copyright: "일부 콘텐츠의 무단 사용을 금지합니다.",
+        },
     },
     ja: {
         home: {
@@ -55,7 +65,7 @@ export const messages = {
         },
         products: {
             title: "Products / Services",
-            subtitle: "提供したいサービスやポートフォリオのプロジェクトを一覧できます。",
+            subtitle: "これまでに参画したプロジェクトをまとめています。",
             searchPlaceholder: "キーワードで検索（例: React, Mobile...）",
         },
         pricing: {
@@ -80,5 +90,16 @@ export const messages = {
             messagePlaceholder: "お問い合わせ内容をご記入ください。",
             submitLabel: "送信する",
         },
+        footer: {
+            brand: "ikjun.dev",
+            tagline: "Android × Web ポートフォリオ",
+            builtWith: "React + TypeScript · GitHub Pages",
+            links: {
+                github: "GitHub",
+                email: "Email",
+            },
+            copyright: "内容の無断使用はご遠慮ください。",
+        },
     },
 } as const;
+
