@@ -18,7 +18,7 @@ export const messages = {
         },
         products: {
             title: "Products / Services",
-            subtitle: "지금까지 참여했던 프로젝트를 정리했습니다.",
+            subtitle: "지금까지 참여했던 프로젝트를 정리했습니다. 프로젝트 카드를 누르면 상세하게 보여줍니다.",
             searchPlaceholder: "검색어를 입력하세요 (예: React, Mobile...)",
         },
         pricing: {
@@ -65,7 +65,7 @@ export const messages = {
         },
         products: {
             title: "Products / Services",
-            subtitle: "これまでに参画したプロジェクトをまとめています。",
+            subtitle: "これまでに参加したプロジェクトをまとめました。 プロジェクトカードを押すと、詳細に表示されます。",
             searchPlaceholder: "キーワードで検索（例: React, Mobile...）",
         },
         pricing: {

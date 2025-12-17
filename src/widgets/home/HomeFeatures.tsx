@@ -53,8 +53,7 @@ export const HomeFeatures: React.FC = () => {
   return (
     <section className="section">
       <div className="container">
-        <h2 className="section-title">{t.heroTitle}</h2>
-        <p className="section-subtitle">{t.heroDescription}</p>
+
         <div className="card-grid">
           {features.map((feature) => (
             <article key={feature.title} className="card">
