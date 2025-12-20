@@ -265,19 +265,6 @@ export const SiteOverview: React.FC = () => {
                     </div>
                 </div>
 
-                {/* CTA */}
-                <div className="site-cta">
-                    <div className="site-cta-text">
-                        {language === "ko"
-                            ? "프로젝트 결과는 Products 탭에서 상세 모달로 확인할 수 있어요."
-                            : "プロジェクト詳細は Products タブのモーダルで確認できます。"}
-                    </div>
-                    <div className="site-cta-sub">
-                        {language === "ko"
-                            ? "홈은 ‘이 사이트를 어떻게 만들었는지’를 보여주는 공간으로 유지하는 걸 추천."
-                            : "Home は「このサイトをどう作ったか」を見せる場所として維持するのがおすすめ。"}
-                    </div>
-                </div>
             </div>
         </section>
     );
