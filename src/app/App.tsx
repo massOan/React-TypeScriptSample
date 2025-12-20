@@ -1,49 +1,43 @@
 // src/app/App.tsx
 import React, { useState } from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Header } from "../widgets/header/Header";
 import { Footer } from "../widgets/footer/Footer";
-import { TabId, DEFAULT_TAB_ID } from "../shared/config/navigation";
 import { HomePage } from "../pages/HomePage";
 import { ProductsPage } from "../pages/ProductsPage";
 import { PricingPage } from "../pages/PricingPage";
 import { BlogPage } from "../pages/BlogPage";
 import { ContactPage } from "../pages/ContactPage";
 import { LanguageProvider } from "../shared/context/LanguageContext";
-import { IntroOverlay } from "../shared/ui/IntroOverlay"; // ✅ 추가
+import { IntroOverlay } from "../shared/ui/IntroOverlay";
 
 const App: React.FC = () => {
-  const [activeTabId, setActiveTabId] = useState<TabId>(DEFAULT_TAB_ID);
-  const [showIntro, setShowIntro] = useState(true); // ✅ 인트로 표시 여부
-
-  const renderPage = () => {
-    switch (activeTabId) {
-      case "home":
-        return <HomePage />;
-      case "products":
-        return <ProductsPage />;
-      case "pricing":
-        return <PricingPage />;
-      case "blog":
-        return <BlogPage />;
-      case "contact":
-        return <ContactPage />;
-      default:
-        return null;
-    }
-  };
+  const [showIntro, setShowIntro] = useState(true);
 
   return (
     <LanguageProvider>
-      {/* ✅ 인트로 오버레이: 맨 위에서 페이지 전체를 덮어씀 */}
+      {/* 인트로 오버레이: 맨 위에서 페이지 전체를 덮어씀 */}
       {showIntro && (
         <IntroOverlay onFinish={() => setShowIntro(false)} />
       )}
 
-      <div className="page">
-        <Header activeTabId={activeTabId} onTabChange={setActiveTabId} />
-        <main>{renderPage()}</main>
-        <Footer />
-      </div>
+      <BrowserRouter basename="/Work-Archive">
+        <div className="page">
+          <Header />
+          <main>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/products" element={<ProductsPage />} />
+              <Route path="/pricing" element={<PricingPage />} />
+              <Route path="/blog" element={<BlogPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              {/* 잘못된 경로는 홈으로 리다이렉트 */}
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </BrowserRouter>
     </LanguageProvider>
   );
 };

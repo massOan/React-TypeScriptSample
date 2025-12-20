@@ -1,13 +1,10 @@
 // src/widgets/header/Header.tsx
 import React from "react";
-import { TabId, TABS } from "../../shared/config/navigation";
+import { NavLink } from "react-router-dom";
+import { TABS } from "../../shared/config/navigation";
 import { LANGUAGE_OPTIONS, Language } from "../../shared/config/i18n";
 import { useLanguage } from "../../shared/context/LanguageContext";
-
-type HeaderProps = {
-    activeTabId: TabId;
-    onTabChange: (id: TabId) => void;
-};
+import type { TabId } from "../../shared/config/navigation";
 
 export const NAV_LABELS: Record<Language, Record<TabId, string>> = {
     ko: {
@@ -26,11 +23,8 @@ export const NAV_LABELS: Record<Language, Record<TabId, string>> = {
     },
 };
 
-export const Header: React.FC<HeaderProps> = ({
-    activeTabId,
-    onTabChange,
-}) => {
-    const { language, setLanguage } = useLanguage(); // ✅ 여기서 꺼내씀
+export const Header: React.FC = () => {
+    const { language, setLanguage } = useLanguage();
 
     return (
         <header className="header">
@@ -40,19 +34,19 @@ export const Header: React.FC<HeaderProps> = ({
                     <div className="logo-sub">Android × Web Engineer</div>
                 </div>
 
-
                 <nav className="nav-tabs">
                     {TABS.map((tab) => {
                         const label = NAV_LABELS[language][tab.id];
                         return (
-                            <button
+                            <NavLink
                                 key={tab.id}
-                                type="button"
-                                className={`tab ${activeTabId === tab.id ? "active" : ""}`}
-                                onClick={() => onTabChange(tab.id)}
+                                to={tab.path}
+                                className={({ isActive }) =>
+                                    `tab ${isActive ? "active" : ""}`
+                                }
                             >
                                 {label}
-                            </button>
+                            </NavLink>
                         );
                     })}
                 </nav>
