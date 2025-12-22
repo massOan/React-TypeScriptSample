@@ -5,7 +5,7 @@ import { Header } from "../widgets/header/Header";
 import { Footer } from "../widgets/footer/Footer";
 import { HomePage } from "../pages/HomePage";
 import { ProductsPage } from "../pages/ProductsPage";
-import { PricingPage } from "../pages/PricingPage";
+import { NowPage } from "../pages/NowPage";
 import { BlogPage } from "../pages/BlogPage";
 import { ContactPage } from "../pages/ContactPage";
 import { LanguageProvider } from "../shared/context/LanguageContext";
@@ -28,7 +28,7 @@ const App: React.FC = () => {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/products" element={<ProductsPage />} />
-              <Route path="/pricing" element={<PricingPage />} />
+              <Route path="/now" element={<NowPage />} />
               <Route path="/blog" element={<BlogPage />} />
               <Route path="/contact" element={<ContactPage />} />
               {/* 잘못된 경로는 홈으로 리다이렉트 */}
