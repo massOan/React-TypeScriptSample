@@ -28,7 +28,8 @@ function transformSkillData(data: SkillCategoryWithSkills[]): SkillCategory[] {
             icon: skill.icon_url ?? "",
             descriptionKo: skill.description_ko ?? "",
             descriptionJa: skill.description_ja ?? "",
-            tags: skill.tags ?? [],
+            tagsKo: skill.tags_ko ?? skill.tags ?? [],
+            tagsJa: skill.tags_ja ?? skill.tags ?? [],
         })),
     }));
 }

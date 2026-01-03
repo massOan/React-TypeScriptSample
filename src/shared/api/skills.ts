@@ -42,7 +42,9 @@ export type SkillRow = {
     icon_url: string | null;
     description_ko: string | null;
     description_ja: string | null;
-    tags: string[] | null;
+    tags: string[] | null;           // deprecated, 마이그레이션 후 제거 예정
+    tags_ko: string[] | null;
+    tags_ja: string[] | null;
     display_order: number;
     is_active: boolean;
 };

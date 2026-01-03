@@ -10,7 +10,8 @@ export type Skill = {
     icon: string;
     descriptionKo: string;
     descriptionJa: string;
-    tags: string[];
+    tagsKo: string[];
+    tagsJa: string[];
 };
 
 export type SkillCategory = {

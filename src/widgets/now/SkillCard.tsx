@@ -54,6 +54,7 @@ export const SkillCard: React.FC<SkillCardProps> = ({ skill }) => {
 
     const patternType = skill.name.length;
     const description = language === "ja" ? skill.descriptionJa : skill.descriptionKo;
+    const tags = language === "ja" ? skill.tagsJa : skill.tagsKo;
 
     return (
         <div
@@ -206,7 +207,7 @@ export const SkillCard: React.FC<SkillCardProps> = ({ skill }) => {
                         {description}
                     </p>
                     <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-                        {skill.tags.map((tag) => (
+                        {tags.map((tag) => (
                             <span key={tag} style={{
                                 fontSize: 11,
                                 fontWeight: 600,
